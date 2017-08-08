@@ -12,7 +12,7 @@ ostream & BotsEngine::Damage::operator<<(ostream & stream, const IDamageType & d
 	}
 }
 
-BotsEngine::Damage::DamageType::DamageType(string type, string subType)
+BotsEngine::Damage::DamageType::DamageType(const string type, const string subType)
 	: type(type), subType(subType)
 {
 }

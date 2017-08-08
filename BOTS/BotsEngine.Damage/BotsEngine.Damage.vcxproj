@@ -112,10 +112,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Damage.h" />
+    <ClInclude Include="DamageManipulator.h" />
     <ClInclude Include="DamageType.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Damage.cpp" />
+    <ClCompile Include="DamageManipulator.cpp" />
     <ClCompile Include="DamageType.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

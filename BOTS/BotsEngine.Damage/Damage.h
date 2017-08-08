@@ -15,7 +15,9 @@ namespace BotsEngine
 		public:
 			DamageValue(unsigned int value = 0);
 			unsigned int GetValue() const;
-			const DamageValue operator+(const DamageValue & damageValue) const;
+			friend const DamageValue operator+(const DamageValue & value1, const DamageValue & value2);
+			friend const DamageValue operator+(const DamageValue & value1, const int value2);
+			friend const DamageValue operator+(const int value1, const DamageValue & value2);
 		};
 
 		inline ostream & operator<<(ostream & stream, const DamageValue & damageValue);
