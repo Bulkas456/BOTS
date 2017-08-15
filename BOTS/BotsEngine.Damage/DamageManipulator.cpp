@@ -21,3 +21,13 @@ DamageValue ConstantNumberDamageManipulator::Manipulate(const DamageValue damage
 {
 	return damageValue + this->manipulatorValue;
 }
+
+PercentDamageManipulator::PercentDamageManipulator(const IDamageType & damageType, double percentValue)
+	: ManipulatorBase(damageType), percentValue(percentValue)
+{
+}
+
+DamageValue PercentDamageManipulator::Manipulate(const DamageValue damageValue) const
+{
+	return DamageValue();
+}

@@ -1,8 +1,10 @@
 #pragma once
 #include"Damage.h"
 #include"DamageType.h"
+#include<vector>
 
 using namespace BotsEngine::Damage;
+using namespace std;
 
 namespace BotsEngine
 {
@@ -37,6 +39,16 @@ namespace BotsEngine
 
 			public:
 				ConstantNumberDamageManipulator(const IDamageType & damageType, int manipulatorValue);
+				DamageValue Manipulate(const DamageValue damageValue) const;
+			};
+
+			class PercentDamageManipulator : public virtual ManipulatorBase
+			{
+			private:
+				const double percentValue;
+
+			public:
+				PercentDamageManipulator(const IDamageType & damageType, double percentValue);
 				DamageValue Manipulate(const DamageValue damageValue) const;
 			};
 		}
