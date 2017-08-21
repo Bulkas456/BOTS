@@ -11,6 +11,11 @@ unsigned int DamageValue::GetValue() const
 	return this->value;
 }
 
+const bool BotsEngine::Damage::operator==(const DamageValue & value1, const DamageValue & value2)
+{
+	return value1.value == value2.value;
+}
+
 const DamageValue BotsEngine::Damage::operator+(const DamageValue & value1, const DamageValue & value2)
 {
 	return DamageValue(value1.value + value2.value);

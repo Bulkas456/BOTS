@@ -1,4 +1,5 @@
 #include "DamageManipulator.h"
+#include <stdlib.h> 
 
 using namespace BotsEngine::Damage::Manipulator;
 
@@ -12,8 +13,13 @@ const IDamageType & ManipulatorBase::GetDamageType() const
 	return this->damageType;
 }
 
-ConstantNumberDamageManipulator::ConstantNumberDamageManipulator(const IDamageType & damageType, int manipulatorValue)
+ConstantValueManipulator::ConstantValueManipulator(const IDamageType & damageType, const int manipulatorValue)
 	: ManipulatorBase(damageType), manipulatorValue(manipulatorValue)
+{
+}
+
+ConstantNumberDamageManipulator::ConstantNumberDamageManipulator(const IDamageType & damageType, const int manipulatorValue)
+	: ManipulatorBase(damageType), ConstantValueManipulator(damageType, manipulatorValue)
 {
 }
 
@@ -22,12 +28,17 @@ DamageValue ConstantNumberDamageManipulator::Manipulate(const DamageValue damage
 	return damageValue + this->manipulatorValue;
 }
 
-PercentDamageManipulator::PercentDamageManipulator(const IDamageType & damageType, double percentValue)
-	: ManipulatorBase(damageType), percentValue(percentValue)
+PercentDamageManipulator::PercentDamageManipulator(const IDamageType & damageType, const int manipulatorValue)
+	: ManipulatorBase(damageType), ConstantValueManipulator(damageType, manipulatorValue)
 {
 }
 
 DamageValue PercentDamageManipulator::Manipulate(const DamageValue damageValue) const
 {
-	return DamageValue();
+	int manipulator = abs(this->manipulatorValue);
+	unsigned int calculatedManipulator = damageValue * (static_cast<double>(manipulator) / 100);
+	return this->manipulatorValue < 0
+		    ? DamageValue();
 }
+
+

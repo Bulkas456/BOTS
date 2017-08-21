@@ -15,7 +15,7 @@ namespace BotsEngine
 			class IDamageManipulator
 			{
 			public:
-				virtual ~IDamageManipulator() 
+				virtual ~IDamageManipulator()
 				{
 				};
 				virtual const IDamageType & GetDamageType() const = 0;
@@ -32,23 +32,26 @@ namespace BotsEngine
 				const IDamageType & GetDamageType() const;
 			};
 
-			class ConstantNumberDamageManipulator : public virtual ManipulatorBase
+			class ConstantValueManipulator : public virtual ManipulatorBase
 			{
-			private:
+			protected:
 				const int manipulatorValue;
 
 			public:
-				ConstantNumberDamageManipulator(const IDamageType & damageType, int manipulatorValue);
+				ConstantValueManipulator(const IDamageType & damageType, const int manipulatorValue);
+			};
+
+			class ConstantNumberDamageManipulator : public virtual ConstantValueManipulator
+			{
+			public:
+				ConstantNumberDamageManipulator(const IDamageType & damageType, const int manipulatorValue);
 				DamageValue Manipulate(const DamageValue damageValue) const;
 			};
 
-			class PercentDamageManipulator : public virtual ManipulatorBase
+			class PercentDamageManipulator : public virtual ConstantValueManipulator
 			{
-			private:
-				const double percentValue;
-
 			public:
-				PercentDamageManipulator(const IDamageType & damageType, double percentValue);
+				PercentDamageManipulator(const IDamageType & damageType, const int manipulatorValue);
 				DamageValue Manipulate(const DamageValue damageValue) const;
 			};
 		}
