@@ -1,8 +1,10 @@
 #pragma once
 #include"Damage.h"
 #include"DamageType.h"
+#include "..\BotsEngine.Common\PercentageValue.h"
 #include<vector>
 
+using namespace BotsEngine::Common;
 using namespace BotsEngine::Damage;
 using namespace std;
 
@@ -32,26 +34,30 @@ namespace BotsEngine
 				const IDamageType & GetDamageType() const;
 			};
 
+			template<class TValue>
 			class ConstantValueManipulator : public virtual ManipulatorBase
 			{
 			protected:
-				const int manipulatorValue;
+				const TValue manipulatorValue;
 
 			public:
-				ConstantValueManipulator(const IDamageType & damageType, const int manipulatorValue);
+				ConstantValueManipulator(const IDamageType & damageType, const TValue manipulatorValue) 
+					: ManipulatorBase(damageType), manipulatorValue(manipulatorValue)
+				{
+				};
 			};
 
-			class ConstantNumberDamageManipulator : public virtual ConstantValueManipulator
+			class ConstantNumberDamageManipulator : public virtual ConstantValueManipulator<int>
 			{
 			public:
 				ConstantNumberDamageManipulator(const IDamageType & damageType, const int manipulatorValue);
 				DamageValue Manipulate(const DamageValue damageValue) const;
 			};
 
-			class PercentDamageManipulator : public virtual ConstantValueManipulator
+			class PercentDamageManipulator : public virtual ConstantValueManipulator<PercentageValue>
 			{
 			public:
-				PercentDamageManipulator(const IDamageType & damageType, const int manipulatorValue);
+				PercentDamageManipulator(const IDamageType & damageType, const PercentageValue manipulatorValue);
 				DamageValue Manipulate(const DamageValue damageValue) const;
 			};
 		}
