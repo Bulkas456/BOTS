@@ -21,7 +21,7 @@ namespace BotsEngine
 				{
 				};
 				virtual const IDamageType & GetDamageType() const = 0;
-				virtual DamageValue Manipulate(const DamageValue damageValue) const = 0;
+				virtual Damage Manipulate(const Damage damage) const = 0;
 			};
 
 			class ManipulatorBase : public virtual IDamageManipulator
@@ -51,14 +51,14 @@ namespace BotsEngine
 			{
 			public:
 				ConstantNumberDamageManipulator(const IDamageType & damageType, const int manipulatorValue);
-				DamageValue Manipulate(const DamageValue damageValue) const;
+				Damage Manipulate(const Damage damage) const;
 			};
 
 			class PercentDamageManipulator : public virtual ConstantValueManipulator<PercentageValue>
 			{
 			public:
 				PercentDamageManipulator(const IDamageType & damageType, const PercentageValue manipulatorValue);
-				DamageValue Manipulate(const DamageValue damageValue) const;
+				Damage Manipulate(const Damage damage) const;
 			};
 		}
 	}

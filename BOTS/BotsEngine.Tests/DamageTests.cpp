@@ -13,7 +13,7 @@ namespace Microsoft
 		namespace CppUnitTestFramework
 		{
 			template<>
-			static std::wstring ToString<DamageValue>(const DamageValue & damage)
+			static std::wstring ToString<Damage>(const Damage & damage)
 			{
 				std::wstringstream s;	
 				s << damage.GetValue(); 
@@ -29,113 +29,113 @@ namespace BotsEngineTests
 	{
 	public:
 		
-		TEST_METHOD(WhenAddDamageValueToDamageValue_ShouldAddProperly)
+		TEST_METHOD(WhenAddDamageToDamage_ShouldAddProperly)
 		{
 			// Arrange
-			DamageValue value1(100);
-			DamageValue value2(5);
-			DamageValue expected(105);
+			Damage value1(100);
+			Damage value2(5);
+			Damage expected(105);
 
 			// Act
-			DamageValue actual = value1 + value2;
+			Damage actual = value1 + value2;
 
 			// Assert
 			Assert::AreEqual(actual, expected);
 		}
 
-		TEST_METHOD(WhenAddIntToDamageValue_ShouldAddProperly)
+		TEST_METHOD(WhenAddIntToDamage_ShouldAddProperly)
 		{
 			// Arrange
-			DamageValue value1(100);
+			Damage value1(100);
 			int value2(5);
-			DamageValue expected(105);
+			Damage expected(105);
 
 			// Act
-			DamageValue actual = value1 + value2;
+			Damage actual = value1 + value2;
 
 			// Assert
 			Assert::AreEqual(actual, expected);
 		}
 
-		TEST_METHOD(WhenAddDamageValueToInt_ShouldAddProperly)
+		TEST_METHOD(WhenAddDamageToInt_ShouldAddProperly)
 		{
 			// Arrange
 			int value1(100);
-			DamageValue value2(5);
-			DamageValue expected(105);
+			Damage value2(5);
+			Damage expected(105);
 
 			// Act
-			DamageValue actual = value1 + value2;
+			Damage actual = value1 + value2;
 
 			// Assert
 			Assert::AreEqual(actual, expected);
 		}
 
-		TEST_METHOD(WhenSubtractDamageValueFromDamageValueWhenTheFirstValueIsGreaterThanTheSecond_ShouldSubtractProperly)
+		TEST_METHOD(WhenSubtractDamageFromDamageWhenTheFirstValueIsGreaterThanTheSecond_ShouldSubtractProperly)
 		{
 			// Arrange
-			DamageValue value1(100);
-			DamageValue value2(5);
-			DamageValue expected(95);
+			Damage value1(100);
+			Damage value2(5);
+			Damage expected(95);
 
 			// Act
-			DamageValue actual = value1 - value2;
+			Damage actual = value1 - value2;
 
 			// Assert
 			Assert::AreEqual(actual, expected);
 		}
 
-		TEST_METHOD(WhenSubtractDamageValueFromDamageValueWhenTheFirstValueIsLowerThanTheSecond_ShouldSubtractProperly)
+		TEST_METHOD(WhenSubtractDamageFromDamageWhenTheFirstValueIsLowerThanTheSecond_ShouldSubtractProperly)
 		{
 			// Arrange
-			DamageValue value1(5);
-			DamageValue value2(100);
-			DamageValue expected(0);
+			Damage value1(5);
+			Damage value2(100);
+			Damage expected(0);
 
 			// Act
-			DamageValue actual = value1 - value2;
+			Damage actual = value1 - value2;
 
 			// Assert
 			Assert::AreEqual(actual, expected);
 		}
 
-		TEST_METHOD(WhenSubtractDamageValueFromDamageValueWhenTheFirstValueIsEqualThanTheSecond_ShouldSubtractProperly)
+		TEST_METHOD(WhenSubtractDamageFromDamageWhenTheFirstValueIsEqualThanTheSecond_ShouldSubtractProperly)
 		{
 			// Arrange
-			DamageValue value1(5);
-			DamageValue value2(5);
-			DamageValue expected(0);
+			Damage value1(5);
+			Damage value2(5);
+			Damage expected(0);
 
 			// Act
-			DamageValue actual = value1 - value2;
+			Damage actual = value1 - value2;
 
 			// Assert
 			Assert::AreEqual(actual, expected);
 		}
 
-		TEST_METHOD(WhenMultipliesDamageValueWithPositivePercentageValue_ShouldMultipleProperly)
+		TEST_METHOD(WhenMultipliesDamageWithPositivePercentageValue_ShouldMultipleProperly)
 		{
 			// Arrange
-			DamageValue value1(50);
+			Damage value1(50);
 			PercentageValue value2(5);
-			DamageValue expected(3);
+			Damage expected(3);
 
 			// Act
-			DamageValue actual = value1 * value2;
+			Damage actual = value1 * value2;
 
 			// Assert
 			Assert::AreEqual(actual, expected);
 		}
 
-		TEST_METHOD(WhenMultipliesDamageValueWithNegativePercentageValue_ShouldMultipleProperly)
+		TEST_METHOD(WhenMultipliesDamageWithNegativePercentageValue_ShouldMultipleProperly)
 		{
 			// Arrange
-			DamageValue value1(50);
+			Damage value1(50);
 			PercentageValue value2(-5);
-			DamageValue expected(3);
+			Damage expected(3);
 
 			// Act
-			DamageValue actual = value1 * value2;
+			Damage actual = value1 * value2;
 
 			// Assert
 			Assert::AreEqual(actual, expected);

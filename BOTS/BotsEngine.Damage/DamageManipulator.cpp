@@ -19,9 +19,9 @@ ConstantNumberDamageManipulator::ConstantNumberDamageManipulator(const IDamageTy
 {
 }
 
-DamageValue ConstantNumberDamageManipulator::Manipulate(const DamageValue damageValue) const
+Damage ConstantNumberDamageManipulator::Manipulate(const Damage damage) const
 {
-	return damageValue + this->manipulatorValue;
+	return damage + this->manipulatorValue;
 }
 
 PercentDamageManipulator::PercentDamageManipulator(const IDamageType & damageType, const PercentageValue manipulatorValue)
@@ -29,9 +29,9 @@ PercentDamageManipulator::PercentDamageManipulator(const IDamageType & damageTyp
 {
 }
 
-DamageValue PercentDamageManipulator::Manipulate(const DamageValue damageValue) const
+Damage PercentDamageManipulator::Manipulate(const Damage damage) const
 {
-	return damageValue * this->manipulatorValue;
+	return damage * this->manipulatorValue;
 }
 
 

@@ -9,27 +9,27 @@ namespace BotsEngine
 {
 	namespace Damage
 	{
-		class DamageValue
+		class Damage
 		{
 		private:
 			unsigned int value;
 
 		public:
-			DamageValue(unsigned int value = 0);
+			Damage(unsigned int value = 0);
 			unsigned int GetValue() const;
-		    friend const bool operator==(const DamageValue & value1, const DamageValue & value2);
+		    friend const bool operator==(const Damage & value1, const Damage & value2);
 
-			friend const DamageValue operator+(const DamageValue & value1, const DamageValue & value2);
+			friend const Damage operator+(const Damage & value1, const Damage & value2);
 
-			friend const DamageValue operator+(const DamageValue & value1, const int value2);
-			friend const DamageValue operator+(const int value1, const DamageValue & value2);
+			friend const Damage operator+(const Damage & value1, const int value2);
+			friend const Damage operator+(const int value1, const Damage & value2);
 
-			friend const DamageValue operator-(const DamageValue & value1, const DamageValue & value2);
+			friend const Damage operator-(const Damage & value1, const Damage & value2);
 
-			friend const DamageValue operator*(const DamageValue & value1, const PercentageValue & value2);
-			friend const DamageValue operator*(const PercentageValue & value1, const DamageValue & value2);
+			friend const Damage operator*(const Damage & value1, const PercentageValue & value2);
+			friend const Damage operator*(const PercentageValue & value1, const Damage & value2);
 		};
 
-		inline ostream & operator<<(ostream & stream, const DamageValue & damageValue);
+		inline ostream & operator<<(ostream & stream, const Damage & damage);
 	}
 }

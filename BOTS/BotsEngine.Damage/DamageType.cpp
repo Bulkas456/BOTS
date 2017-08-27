@@ -1,9 +1,9 @@
 #include "DamageType.h"
 
-ostream & BotsEngine::Damage::operator<<(ostream & stream, const IDamageType & damageValue)
+ostream & BotsEngine::Damage::operator<<(ostream & stream, const IDamageType & damage)
 {
-	stream << damageValue.GetType();
-	const string & subType = damageValue.GetSubType();
+	stream << damage.GetType();
+	const string & subType = damage.GetSubType();
 
 	if (subType.length() > 0)
 	{

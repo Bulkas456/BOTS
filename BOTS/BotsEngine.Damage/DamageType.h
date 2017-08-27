@@ -19,7 +19,7 @@ namespace BotsEngine
 			virtual const string & GetSubType() const = 0;
 		};
 
-		inline ostream & operator<<(ostream & stream, const IDamageType & damageValue);
+		inline ostream & operator<<(ostream & stream, const IDamageType & damage);
 
 		class DamageType : public virtual IDamageType
 		{
