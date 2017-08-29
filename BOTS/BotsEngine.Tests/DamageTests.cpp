@@ -71,6 +71,90 @@ namespace BotsEngineTests
 			Assert::AreEqual(actual, expected);
 		}
 
+		TEST_METHOD(WhenAddNegativeIntToDamage_ShouldAddProperly)
+		{
+			// Arrange
+			Damage value1(100);
+			int value2(-5);
+			Damage expected(95);
+
+			// Act
+			Damage actual = value1 + value2;
+
+			// Assert
+			Assert::AreEqual(actual, expected);
+		}
+
+		TEST_METHOD(WhenAddDamageToNegativeInt_ShouldAddProperly)
+		{
+			// Arrange
+			int value1(-5);
+			Damage value2(100);
+			Damage expected(95);
+
+			// Act
+			Damage actual = value1 + value2;
+
+			// Assert
+			Assert::AreEqual(actual, expected);
+		}
+
+		TEST_METHOD(WhenAddDoubleToDamage_ShouldAddProperly)
+		{
+			// Arrange
+			Damage value1(100);
+			double value2(5.75);
+			Damage expected(106);
+
+			// Act
+			Damage actual = value1 + value2;
+
+			// Assert
+			Assert::AreEqual(actual, expected);
+		}
+
+		TEST_METHOD(WhenAddDamageToDoubleInt_ShouldAddProperly)
+		{
+			// Arrange
+			double value1(100.4);
+			Damage value2(5);
+			Damage expected(105);
+
+			// Act
+			Damage actual = value1 + value2;
+
+			// Assert
+			Assert::AreEqual(actual, expected);
+		}
+
+		TEST_METHOD(WhenAddNegativeDoubleToDamage_ShouldAddProperly)
+		{
+			// Arrange
+			Damage value1(100);
+			double value2(-5.3);
+			Damage expected(95);
+
+			// Act
+			Damage actual = value1 + value2;
+
+			// Assert
+			Assert::AreEqual(actual, expected);
+		}
+
+		TEST_METHOD(WhenAddDamageToNegativeDouble_ShouldAddProperly)
+		{
+			// Arrange
+			double value1(-5.7);
+			Damage value2(100);
+			Damage expected(94);
+
+			// Act
+			Damage actual = value1 + value2;
+
+			// Assert
+			Assert::AreEqual(actual, expected);
+		}
+
 		TEST_METHOD(WhenSubtractDamageFromDamageWhenTheFirstValueIsGreaterThanTheSecond_ShouldSubtractProperly)
 		{
 			// Arrange
@@ -113,12 +197,12 @@ namespace BotsEngineTests
 			Assert::AreEqual(actual, expected);
 		}
 
-		TEST_METHOD(WhenMultipliesDamageWithPositivePercentageValue_ShouldMultipleProperly)
+		TEST_METHOD(WhenMultiplyDamageWithInt_ShouldMultiplyProperly)
 		{
 			// Arrange
-			Damage value1(50);
-			PercentageValue value2(5);
-			Damage expected(3);
+			Damage value1(5);
+			int value2(5);
+			Damage expected(25);
 
 			// Act
 			Damage actual = value1 * value2;
@@ -127,12 +211,54 @@ namespace BotsEngineTests
 			Assert::AreEqual(actual, expected);
 		}
 
-		TEST_METHOD(WhenMultipliesDamageWithNegativePercentageValue_ShouldMultipleProperly)
+		TEST_METHOD(WhenMultiplyDamageWithNegativeInt_ShouldMultiplyProperly)
 		{
 			// Arrange
-			Damage value1(50);
-			PercentageValue value2(-5);
-			Damage expected(3);
+			Damage value1(5);
+			int value2(-5);
+			Damage expected(0);
+
+			// Act
+			Damage actual = value1 * value2;
+
+			// Assert
+			Assert::AreEqual(actual, expected);
+		}
+
+		TEST_METHOD(WhenMultiplyDamageWithDouble_ShouldMultiplyProperly)
+		{
+			// Arrange
+			Damage value1(5);
+			double value2(5.6);
+			Damage expected(30);
+
+			// Act
+			Damage actual = value1 * value2;
+
+			// Assert
+			Assert::AreEqual(actual, expected);
+		}
+
+		TEST_METHOD(WhenMultiplyDamageWithDouble2_ShouldMultiplyProperly)
+		{
+			// Arrange
+			Damage value1(5);
+			double value2(5.3);
+			Damage expected(25);
+
+			// Act
+			Damage actual = value1 * value2;
+
+			// Assert
+			Assert::AreEqual(actual, expected);
+		}
+
+		TEST_METHOD(WhenMultiplyDamageWithNegativeDouble_ShouldMultiplyProperly)
+		{
+			// Arrange
+			Damage value1(5);
+			double value2(-5);
+			Damage expected(0);
 
 			// Act
 			Damage actual = value1 * value2;

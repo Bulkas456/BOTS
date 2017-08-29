@@ -120,11 +120,6 @@
     <ClCompile Include="DamageManipulator.cpp" />
     <ClCompile Include="DamageType.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BotsEngine.Common\BotsEngine.Common.vcxproj">
-      <Project>{cfbd6b89-f785-49cf-80bb-bc995f2ac698}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
