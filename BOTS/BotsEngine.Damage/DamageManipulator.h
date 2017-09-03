@@ -1,10 +1,15 @@
 #pragma once
-#include"Damage.h"
-#include"DamageType.h"
-#include<vector>
+#include <vector>
+#include <memory>
+#include "Damage.h"
+#include "DamageType.h"
+#include "../BotsEngine.Common/Manipulator.h"
+#include "../BotsEngine.Common/Predicate.h"
 
 using namespace BotsEngine::Damage;
-using namespace std;
+using namespace BotsEngine::Damage::DamageType;
+using namespace BotsEngine::Common;
+using namespace BotsEngine::Common::Manipulator;
 
 namespace BotsEngine
 {
@@ -12,51 +17,25 @@ namespace BotsEngine
 	{
 		namespace Manipulator
 		{
-			class IDamageManipulator
+			struct ManipulatorContext
 			{
-			public:
-				virtual ~IDamageManipulator()
-				{
-				};
-				virtual const IDamageType & GetDamageType() const = 0;
-				virtual Damage Manipulate(const Damage damage) const = 0;
+				IDamageType& DamageType;
+				Damage& Damage;
 			};
 
-			class ManipulatorBase : public virtual IDamageManipulator
+			typedef IManipulator<const ManipulatorContext&, const Damage> IDamageManipulator;
+			typedef std::shared_ptr<IPredicate<const IDamageType&>> IDamageTypeFiler;
+			typedef const Damage (*DamageManipulatorMethod)(const Damage &, const int);
+
+			class DamageManipulator : public virtual IDamageManipulator
 			{
 			private:
-				const IDamageType & damageType;
-
+				const IDamageTypeFiler damageTypeFiler;
+				const DamageManipulatorMethod damageManipulatorMethod;
+				const int manipulatorData;
 			public:
-				ManipulatorBase(const IDamageType & damageType);
-				const IDamageType & GetDamageType() const;
-			};
-
-			template<class TValue>
-			class ConstantValueManipulator : public virtual ManipulatorBase
-			{
-			protected:
-				const TValue manipulatorValue;
-
-			public:
-				ConstantValueManipulator(const IDamageType & damageType, const TValue manipulatorValue) 
-					: ManipulatorBase(damageType), manipulatorValue(manipulatorValue)
-				{
-				};
-			};
-
-			class ConstantNumberDamageManipulator : public virtual ConstantValueManipulator<int>
-			{
-			public:
-				ConstantNumberDamageManipulator(const IDamageType & damageType, const int manipulatorValue);
-				Damage Manipulate(const Damage damage) const;
-			};
-
-			class PercentDamageManipulator : public virtual ConstantValueManipulator<int>
-			{
-			public:
-				PercentDamageManipulator(const IDamageType & damageType, const int manipulatorValue);
-				Damage Manipulate(const Damage damage) const;
+				DamageManipulator(const IDamageTypeFiler damageTypeFiler, DamageManipulatorMethod damageManipulatorMethod, const int manipulatorData);
+				const Damage Manipulate(const ManipulatorContext& data);
 			};
 		}
 	}

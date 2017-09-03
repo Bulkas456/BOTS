@@ -25,15 +25,24 @@
     <Filter Include="Source Files\Damage\Manipulator">
       <UniqueIdentifier>{9a885c62-d8b1-49c8-b62c-f6efd0ea1e25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Damage\DamageType">
+      <UniqueIdentifier>{6dd3879a-6059-44de-9bfd-d688eee60f58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Damage\DamageType">
+      <UniqueIdentifier>{4399e165-c0c4-4e21-97e2-41c6c8f3cfb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Damage.h">
       <Filter>Header Files\Damage</Filter>
     </ClInclude>
-    <ClInclude Include="DamageType.h">
-      <Filter>Header Files\Damage</Filter>
-    </ClInclude>
     <ClInclude Include="DamageManipulator.h">
+      <Filter>Header Files\Damage\Manipulator</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageType.h">
+      <Filter>Header Files\Damage\DamageType</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageManipulatorMethods.h">
       <Filter>Header Files\Damage\Manipulator</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,10 +50,13 @@
     <ClCompile Include="Damage.cpp">
       <Filter>Source Files\Damage</Filter>
     </ClCompile>
-    <ClCompile Include="DamageType.cpp">
-      <Filter>Source Files\Damage</Filter>
-    </ClCompile>
     <ClCompile Include="DamageManipulator.cpp">
+      <Filter>Source Files\Damage\Manipulator</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageType.cpp">
+      <Filter>Source Files\Damage\DamageType</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageManipulatorMethods.cpp">
       <Filter>Source Files\Damage\Manipulator</Filter>
     </ClCompile>
   </ItemGroup>

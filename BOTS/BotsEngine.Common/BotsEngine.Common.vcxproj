@@ -18,6 +18,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Manipulator.h" />
+    <ClInclude Include="Predicate.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{CFBD6B89-F785-49CF-80BB-BC995F2AC698}</ProjectGuid>

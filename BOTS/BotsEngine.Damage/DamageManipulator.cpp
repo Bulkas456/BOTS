@@ -1,33 +1,17 @@
 #include "DamageManipulator.h"
+#include "DamageType.h"
 
 using namespace BotsEngine::Damage::Manipulator;
+using namespace BotsEngine::Damage::DamageType;
 
-ManipulatorBase::ManipulatorBase(const IDamageType & damageType)
-	: damageType(damageType)
+DamageManipulator::DamageManipulator(const IDamageTypeFiler damageTypeFiler, DamageManipulatorMethod damageManipulatorMethod, const int manipulatorData)
+	: damageTypeFiler(damageTypeFiler), damageManipulatorMethod(damageManipulatorMethod), manipulatorData(manipulatorData)
 {
 }
 
-const IDamageType & ManipulatorBase::GetDamageType() const
+const Damage DamageManipulator::Manipulate(const ManipulatorContext & data)
 {
-	return this->damageType;
-}
-
-ConstantNumberDamageManipulator::ConstantNumberDamageManipulator(const IDamageType & damageType, const int manipulatorValue)
-	: ManipulatorBase(damageType), ConstantValueManipulator(damageType, manipulatorValue)
-{
-}
-
-Damage ConstantNumberDamageManipulator::Manipulate(const Damage damage) const
-{
-	return damage + this->manipulatorValue;
-}
-
-PercentDamageManipulator::PercentDamageManipulator(const IDamageType & damageType, const int manipulatorValue)
-	: ManipulatorBase(damageType), ConstantValueManipulator(damageType, manipulatorValue)
-{
-}
-
-Damage PercentDamageManipulator::Manipulate(const Damage damage) const
-{
-	return damage * (1 + static_cast<double>(this->manipulatorValue) / 100);
+	return this->damageTypeFiler->Check(data.DamageType)
+		    ? this->damageManipulatorMethod(data.Damage, this->manipulatorData)
+		    : data.Damage;
 }

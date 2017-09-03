@@ -9,28 +9,31 @@ namespace BotsEngine
 {
 	namespace Damage
 	{
-		class IDamageType
+		namespace DamageType
 		{
-		public:
-			virtual ~IDamageType()
+			class IDamageType
 			{
+			public:
+				virtual ~IDamageType()
+				{
+				};
+				virtual const string & GetType() const = 0;
+				virtual const string & GetSubType() const = 0;
 			};
-			virtual const string & GetType() const = 0;
-			virtual const string & GetSubType() const = 0;
-		};
 
-		inline ostream & operator<<(ostream & stream, const IDamageType & damage);
+			inline ostream & operator<<(ostream & stream, const IDamageType & damage);
 
-		class DamageType : public virtual IDamageType
-		{
-		private:
-			string type;
-			string subType;
+			class DamageType : public virtual IDamageType
+			{
+			private:
+				string type;
+				string subType;
 
-		public:
-			DamageType(const string type, const string subType = "");
-			const string & GetType() const;
-			const string & GetSubType() const;
-		};
+			public:
+				DamageType(const string type, const string subType = "");
+				const string & GetType() const;
+				const string & GetSubType() const;
+			};
+		}
 	}
 }

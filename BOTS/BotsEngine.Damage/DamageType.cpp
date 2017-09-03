@@ -1,6 +1,9 @@
+#include<string>
 #include "DamageType.h"
 
-ostream & BotsEngine::Damage::operator<<(ostream & stream, const IDamageType & damage)
+using namespace BotsEngine::Damage::DamageType;
+
+ostream & BotsEngine::Damage::DamageType::operator<<(ostream & stream, const IDamageType & damage)
 {
 	stream << damage.GetType();
 	const string & subType = damage.GetSubType();
@@ -11,17 +14,17 @@ ostream & BotsEngine::Damage::operator<<(ostream & stream, const IDamageType & d
 	}
 }
 
-BotsEngine::Damage::DamageType::DamageType(const string type, const string subType)
+DamageType::DamageType(const string type, const string subType)
 	: type(type), subType(subType)
 {
 }
 
-const string & BotsEngine::Damage::DamageType::GetType() const
+const string & DamageType::GetType() const
 {
 	return this->type;
 }
 
-const string & BotsEngine::Damage::DamageType::GetSubType() const
+const string & DamageType::GetSubType() const
 {
 	return this->subType;
 }
