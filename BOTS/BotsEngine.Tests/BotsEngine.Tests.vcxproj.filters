@@ -16,12 +16,18 @@
     <Filter Include="Source Files\Damage">
       <UniqueIdentifier>{8a66b61a-2687-4d58-ac27-cc53cf310b50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\DamageType">
+      <UniqueIdentifier>{20f18e30-f741-422e-a239-d601f3a996fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Converters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -31,6 +37,12 @@
     </ClCompile>
     <ClCompile Include="DamageTests.cpp">
       <Filter>Source Files\Damage</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageTypeTests.cpp">
+      <Filter>Source Files\DamageType</Filter>
+    </ClCompile>
+    <ClCompile Include="Converters.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
