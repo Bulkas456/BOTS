@@ -1,15 +1,16 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <functional>
 #include "Damage.h"
 #include "DamageType.h"
 #include "../BotsEngine.Common/Manipulator.h"
-#include "../BotsEngine.Common/Predicate.h"
 
 using namespace BotsEngine::Damage;
 using namespace BotsEngine::Damage::DamageType;
 using namespace BotsEngine::Common;
 using namespace BotsEngine::Common::Manipulator;
+using namespace std;
 
 namespace BotsEngine
 {
@@ -24,17 +25,14 @@ namespace BotsEngine
 			};
 
 			typedef IManipulator<const ManipulatorContext&, const Damage> IDamageManipulator;
-			typedef std::shared_ptr<IPredicate<const IDamageType&>> IDamageTypeFiler;
-			typedef const Damage (*DamageManipulatorMethod)(const Damage &, const int);
 
 			class DamageManipulator : public virtual IDamageManipulator
 			{
 			private:
-				const IDamageTypeFiler damageTypeFiler;
-				const DamageManipulatorMethod damageManipulatorMethod;
-				const int manipulatorData;
+				const function<bool(const IDamageType&)> damageTypeFiler;
+				const function<Damage(const Damage&)> damageManipulator;
 			public:
-				DamageManipulator(const IDamageTypeFiler damageTypeFiler, DamageManipulatorMethod damageManipulatorMethod, const int manipulatorData);
+				DamageManipulator(const function<bool(const IDamageType&)> damageTypeFiler, const function<Damage(const Damage&)> damageManipulator);
 				const Damage Manipulate(const ManipulatorContext& data);
 			};
 		}

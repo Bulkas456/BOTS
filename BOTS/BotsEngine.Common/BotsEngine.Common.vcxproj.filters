@@ -21,8 +21,5 @@
     <ClInclude Include="Manipulator.h">
       <Filter>Header Files\Manipulator</Filter>
     </ClInclude>
-    <ClInclude Include="Predicate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
