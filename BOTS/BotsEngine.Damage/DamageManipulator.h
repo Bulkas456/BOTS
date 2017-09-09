@@ -33,7 +33,7 @@ namespace BotsEngine
 				const function<Damage(const Damage&)> damageManipulator;
 			public:
 				DamageManipulator(const function<bool(const IDamageType&)> damageTypeFiler, const function<Damage(const Damage&)> damageManipulator);
-				const Damage Manipulate(const ManipulatorContext& data);
+				const Damage Manipulate(const ManipulatorContext& data) const override;
 			};
 		}
 	}

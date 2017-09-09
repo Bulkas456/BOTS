@@ -56,7 +56,9 @@ const Damage BotsEngine::Damage::operator+(const double value1, const Damage & v
 
 const Damage BotsEngine::Damage::operator*(const Damage & value1, const double value2)
 {
-	return value1 * static_cast<int>(round(value2));
+	return value2 > 0
+		    ? Damage(round(value1.GetValue() * value2))
+		    : Damage();
 }
 
 const Damage BotsEngine::Damage::operator*(const double value1, const Damage & value2)

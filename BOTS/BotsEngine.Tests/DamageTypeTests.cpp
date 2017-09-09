@@ -40,8 +40,8 @@ namespace BotsEngineTests
 			DamageType actual("type", "subtype");
 
 			// Assert
-			Assert::AreEqual(StringToWstring(actual.GetType()), expectedType);
-			Assert::AreEqual(StringToWstring(actual.GetSubType()), expectedSubType);
+			Assert::AreEqual(expectedType, StringToWstring(actual.GetType()));
+			Assert::AreEqual(expectedSubType, StringToWstring(actual.GetSubType()));
 		}
 	};
 }

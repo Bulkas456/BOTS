@@ -10,5 +10,5 @@ const Damage BotsEngine::Damage::Manipulator::ConstantValueDamageManipulatorMeth
 
 const Damage BotsEngine::Damage::Manipulator::PercentValueDamageManipulatorMethod(const Damage & damage, const int manipulatorValue)
 {
-	return damage * (1 + static_cast<double>(manipulatorValue) / 100);
+	return damage * (1.0 + static_cast<double>(manipulatorValue) / 100.0);
 }

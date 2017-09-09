@@ -9,7 +9,7 @@ DamageManipulator::DamageManipulator(const function<bool(const IDamageType&)> da
 {
 }
 
-const Damage DamageManipulator::Manipulate(const ManipulatorContext & data)
+const Damage DamageManipulator::Manipulate(const ManipulatorContext & data) const
 {
 	return this->damageTypeFiler(data.DamageType)
 		    ? this->damageManipulator(data.Damage)
