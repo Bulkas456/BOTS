@@ -5,6 +5,7 @@
 #include "Damage.h"
 #include "DamageType.h"
 #include "../BotsEngine.Common/Manipulator.h"
+#include "DamageData.h"
 
 using namespace BotsEngine::Damage;
 using namespace BotsEngine::Damage::DamageType;
@@ -18,13 +19,7 @@ namespace BotsEngine
 	{
 		namespace Manipulator
 		{
-			struct ManipulatorContext
-			{
-				IDamageType& DamageType;
-				Damage& Damage;
-			};
-
-			typedef IManipulator<const ManipulatorContext&, const Damage> IDamageManipulator;
+			typedef IManipulator<DamageData&, DamageData&> IDamageManipulator;
 
 			class DamageManipulator : public virtual IDamageManipulator
 			{
@@ -33,7 +28,7 @@ namespace BotsEngine
 				const function<Damage(const Damage&)> damageManipulator;
 			public:
 				DamageManipulator(const function<bool(const IDamageType&)> damageTypeFiler, const function<Damage(const Damage&)> damageManipulator);
-				const Damage Manipulate(const ManipulatorContext& data) const override;
+				DamageData& Manipulate(DamageData& data) const override;
 			};
 		}
 	}

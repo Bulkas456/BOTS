@@ -9,9 +9,13 @@ DamageManipulator::DamageManipulator(const function<bool(const IDamageType&)> da
 {
 }
 
-const Damage DamageManipulator::Manipulate(const ManipulatorContext & data) const
+DamageData& DamageManipulator::Manipulate(DamageData & data) const
 {
-	return this->damageTypeFiler(data.DamageType)
-		    ? this->damageManipulator(data.Damage)
-		    : data.Damage; 
+	if (this->damageTypeFiler(data.DamageType))
+	{
+		data.Min = this->damageManipulator(data.Min);
+		data.Max = this->damageManipulator(data.Max);
+	}
+
+	return data;
 }

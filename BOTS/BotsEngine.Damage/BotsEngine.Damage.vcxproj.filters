@@ -45,6 +45,9 @@
     <ClInclude Include="DamageManipulatorMethods.h">
       <Filter>Header Files\Damage\Manipulator</Filter>
     </ClInclude>
+    <ClInclude Include="DamageData.h">
+      <Filter>Header Files\Damage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Damage.cpp">

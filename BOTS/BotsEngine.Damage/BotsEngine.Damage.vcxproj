@@ -112,6 +112,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Damage.h" />
+    <ClInclude Include="DamageData.h" />
     <ClInclude Include="DamageManipulator.h" />
     <ClInclude Include="DamageManipulatorMethods.h" />
     <ClInclude Include="DamageType.h" />
