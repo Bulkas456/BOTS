@@ -26,10 +26,10 @@ namespace BotsEngineTests
 			Damage min(10);
 			Damage max(12);
 			BotsEngine::Damage::DamageType::DamageType damageType("type");
-			DamageData data{ min, max, damageType };
+			DamageData actual{ min, max, damageType };
 
 			// Act
-			DamageData actual = manipulator.Manipulate(data);
+			manipulator.Manipulate(actual);
 
 			// Assert
 			Assert::AreEqual(15u, actual.Min.GetValue());
@@ -44,10 +44,10 @@ namespace BotsEngineTests
 			Damage min(10);
 			Damage max(12);
 			BotsEngine::Damage::DamageType::DamageType damageType("type");
-			DamageData data{ min, max, damageType };
+			DamageData actual{ min, max, damageType };
 
 			// Act
-			DamageData actual = manipulator.Manipulate(data);
+			manipulator.Manipulate(actual);
 
 			// Assert
 			Assert::AreEqual(5u, actual.Min.GetValue());
@@ -62,10 +62,10 @@ namespace BotsEngineTests
 			Damage min(10);
 			Damage max(20);
 			BotsEngine::Damage::DamageType::DamageType damageType("type");
-			DamageData data{ min, max, damageType };
+			DamageData actual{ min, max, damageType };
 
 			// Act
-			DamageData actual = manipulator.Manipulate(data);
+			manipulator.Manipulate(actual);
 
 			// Assert
 			Assert::AreEqual(15u, actual.Min.GetValue());
@@ -80,10 +80,10 @@ namespace BotsEngineTests
 			Damage min(15);
 			Damage max(22);
 			BotsEngine::Damage::DamageType::DamageType damageType("type");
-			DamageData data{ min, max, damageType };
+			DamageData actual{ min, max, damageType };
 
 			// Act
-			DamageData actual = manipulator.Manipulate(data);
+			manipulator.Manipulate(actual);
 
 			// Assert
 			Assert::AreEqual(18u, actual.Min.GetValue());
@@ -98,14 +98,35 @@ namespace BotsEngineTests
 			Damage min(17);
 			Damage max(22);
 			BotsEngine::Damage::DamageType::DamageType damageType("type");
-			DamageData data{ min, max, damageType };
+			DamageData actual{ min, max, damageType };
 
 			// Act
-			DamageData actual = manipulator.Manipulate(data);
+			manipulator.Manipulate(actual);
 
 			// Assert
 			Assert::AreEqual(13u, actual.Min.GetValue());
 			Assert::AreEqual(17u, actual.Max.GetValue());
+		}
+
+		TEST_METHOD(WhenManipulateMoreThanOnce_ShouldManipulateProperly)
+		{
+			// Arrange
+			IntValueDamageManipulator valueManipulator1(PercentValueDamageManipulatorMethod, -23);
+			DamageManipulator manipulator1([](const IDamageType&) -> bool { return true; }, valueManipulator1);
+			IntValueDamageManipulator valueManipulator2(ConstantValueDamageManipulatorMethod, 5);
+			DamageManipulator manipulator2([](const IDamageType&) -> bool { return true; }, valueManipulator2);
+			Damage min(170);
+			Damage max(220);
+			BotsEngine::Damage::DamageType::DamageType damageType("type");
+			DamageData actual{ min, max, damageType };
+
+			// Act
+			manipulator1.Manipulate(actual);
+			manipulator2.Manipulate(actual);
+
+			// Assert
+			Assert::AreEqual(136u, actual.Min.GetValue());
+			Assert::AreEqual(174u, actual.Max.GetValue());
 		}
 	};
 }

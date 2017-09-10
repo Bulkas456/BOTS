@@ -19,7 +19,7 @@ namespace BotsEngine
 	{
 		namespace Manipulator
 		{
-			typedef IManipulator<DamageData&, DamageData&> IDamageManipulator;
+			typedef IManipulator<DamageData&, void> IDamageManipulator;
 
 			class DamageManipulator : public virtual IDamageManipulator
 			{
@@ -28,7 +28,7 @@ namespace BotsEngine
 				const function<Damage(const Damage&)> damageManipulator;
 			public:
 				DamageManipulator(const function<bool(const IDamageType&)> damageTypeFiler, const function<Damage(const Damage&)> damageManipulator);
-				DamageData& Manipulate(DamageData& data) const override;
+				void Manipulate(DamageData& data) const override;
 			};
 		}
 	}
